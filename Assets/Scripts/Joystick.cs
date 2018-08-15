@@ -22,24 +22,18 @@ public class Joystick: MonoBehaviour, IDragHandler, IPointerDownHandler, IPointe
     {
         Vector2 pos = Vector2.zero;
 
-        //screen space position을 rectransform의 local position으로 변환
         RectTransformUtility.ScreenPointToLocalPointInRectangle(jsBackground.rectTransform, eventData.position, eventData.pressEventCamera, out pos);
 
-        pos.x = (pos.x / jsBackground.rectTransform.rect.width);
-        pos.y = (pos.y / jsBackground.rectTransform.rect.height);
-
-        float x = pos.x * 2;
-        float y = pos.y * 2;
+        float x = (pos.x / jsBackground.rectTransform.rect.width) * 2;
+        float y = (pos.y / jsBackground.rectTransform.rect.height) * 2;
 
         inputDir = new Vector3(x, y, 0);
-
-        Debug.Log(inputDir);
-
         inputDir = inputDir.magnitude > 1 ? inputDir.normalized : inputDir;
 
-        joystick.rectTransform.anchoredPosition = new Vector3(inputDir.x * (jsBackground.rectTransform.sizeDelta.x / 2)
-            , inputDir.y * (jsBackground.rectTransform.sizeDelta.y) / 2);
-       
+        float joystickPosX = Mathf.Abs(pos.x) > jsBackground.rectTransform.rect.width / 2 ? pos.normalized.x * jsBackground.rectTransform.rect.width / 2 : pos.x;
+        float joystickPosY = Mathf.Abs(pos.y) > jsBackground.rectTransform.rect.height / 2 ? pos.normalized.y * jsBackground.rectTransform.rect.height / 2 : pos.y;
+                
+        joystick.rectTransform.anchoredPosition = new Vector3(joystickPosX, joystickPosY);
     }
 
     public void OnPointerDown(PointerEventData eventData)
