@@ -9,7 +9,7 @@ public class Joystick: MonoBehaviour, IDragHandler, IPointerDownHandler, IPointe
     Image jsBackground;
     Image joystick;
 
-    Vector3 inputDir;
+    public Vector3 inputDir;
 
     void Start()
     {
@@ -22,20 +22,23 @@ public class Joystick: MonoBehaviour, IDragHandler, IPointerDownHandler, IPointe
     {
         Vector2 pos = Vector2.zero;
 
+        //screen space position을 rectransform의 local position으로 변환
         RectTransformUtility.ScreenPointToLocalPointInRectangle(jsBackground.rectTransform, eventData.position, eventData.pressEventCamera, out pos);
 
-        pos.x = (pos.x / jsBackground.rectTransform.sizeDelta.x);
-        pos.y = (pos.y / jsBackground.rectTransform.sizeDelta.y);
+        pos.x = (pos.x / jsBackground.rectTransform.rect.width);
+        pos.y = (pos.y / jsBackground.rectTransform.rect.height);
 
-        float x = jsBackground.rectTransform.pivot.x == 1f ? pos.x * 2 + 1 : pos.x * 2 - 1;
-        float y = jsBackground.rectTransform.pivot.y == 1f ? pos.y * 2 + 1 : pos.y * 2 - 1;
+        float x = pos.x * 2;
+        float y = pos.y * 2;
 
         inputDir = new Vector3(x, y, 0);
 
+        Debug.Log(inputDir);
+
         inputDir = inputDir.magnitude > 1 ? inputDir.normalized : inputDir;
 
-        joystick.rectTransform.anchoredPosition = new Vector3(inputDir.x * (jsBackground.rectTransform.sizeDelta.x / 3)
-            , inputDir.y * (jsBackground.rectTransform.sizeDelta.y) / 3);
+        joystick.rectTransform.anchoredPosition = new Vector3(inputDir.x * (jsBackground.rectTransform.sizeDelta.x / 2)
+            , inputDir.y * (jsBackground.rectTransform.sizeDelta.y) / 2);
        
     }
 
@@ -49,4 +52,5 @@ public class Joystick: MonoBehaviour, IDragHandler, IPointerDownHandler, IPointe
         inputDir = Vector3.zero;
         joystick.rectTransform.anchoredPosition = Vector3.zero;
     }
+
 }

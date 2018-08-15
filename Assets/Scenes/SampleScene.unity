@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 22430260}
   - component: {fileID: 22430262}
   - component: {fileID: 22430261}
+  - component: {fileID: 22430263}
   m_Layer: 5
   m_Name: JoystickBackground
   m_TagString: Untagged
@@ -183,6 +184,17 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 22430259}
   m_CullTransparentMesh: 0
+--- !u!114 &22430263
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 22430259}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b93d716fe00418d4e847c7fff691aca7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
