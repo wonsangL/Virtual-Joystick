@@ -6,9 +6,4 @@
 
 
 
-###관련 영상
-<p align="cetner">
-
-[![](http://img.youtube.com/vi/p9taRQ5LeYM/0.jpg)](http://www.youtube.com/watch?v=p9taRQ5LeYM "")
-
-</p>
+###[관련 영상](http://www.youtube.com/watch?v=p9taRQ5LeYM)
