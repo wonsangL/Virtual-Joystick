@@ -1,4 +1,4 @@
-# Virsual Joystick
+#Virsual Joystick
 
 모바일에서 사용가능한 가상 조이스틱
 
