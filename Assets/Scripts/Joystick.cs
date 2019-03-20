@@ -9,13 +9,13 @@ public class Joystick: MonoBehaviour, IDragHandler, IPointerDownHandler, IPointe
     Image jsBackground;
     Image joystick;
 
-    public Vector3 inputDir;
+    private Vector2 inputDir;
 
     void Start()
     {
         jsBackground = GetComponent<Image>();
         joystick = transform.GetChild(0).GetComponent<Image>();
-        inputDir = Vector3.zero;
+        inputDir = Vector2.zero;
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -27,7 +27,7 @@ public class Joystick: MonoBehaviour, IDragHandler, IPointerDownHandler, IPointe
         float x = (pos.x / jsBackground.rectTransform.rect.width) * 2;
         float y = (pos.y / jsBackground.rectTransform.rect.height) * 2;
 
-        inputDir = new Vector3(x, y, 0);
+        inputDir = new Vector2(x, y);
         inputDir = inputDir.magnitude > 1 ? inputDir.normalized : inputDir;
 
         float joystickPosX = Mathf.Abs(pos.x) > jsBackground.rectTransform.rect.width / 2 ? pos.normalized.x * jsBackground.rectTransform.rect.width / 2 : pos.x;
@@ -47,4 +47,8 @@ public class Joystick: MonoBehaviour, IDragHandler, IPointerDownHandler, IPointe
         joystick.rectTransform.anchoredPosition = Vector3.zero;
     }
 
+    public Vector2 GetInputVector()
+    {
+        return inputDir;
+    }
 }
