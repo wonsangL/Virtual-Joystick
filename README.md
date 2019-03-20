@@ -1,8 +1,8 @@
-##Virsual Joystick
+# Virsual Joystick
 
 모바일에서 사용가능한 가상 조이스틱
 
-####사용 방법
+## 사용 방법
 
 1. 프로젝트 다운로드
 2. Build 폴더에 있는 unityPackage를 원하는 unity project에 import
@@ -28,4 +28,4 @@ private void Start(){
 // 생략
 ```
 
-####[샘플 영상](http://www.youtube.com/watch?v=p9taRQ5LeYM)
+## [샘플 영상](http://www.youtube.com/watch?v=p9taRQ5LeYM)
